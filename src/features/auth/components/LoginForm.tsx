@@ -17,7 +17,7 @@ export interface LoginFormProps {
 const schema = yup.object().shape({
   rememberMe: yup.boolean(),
   password: yup.string().required('Vui lòng nhập mật khẩu'),
-  username: yup.string().required('Vui lòng nhập tên tài khoản'),
+  userName: yup.string().required('Vui lòng nhập tên tài khoản'),
 });
 
 export default function LoginForm({ initialValues, onSubmit }: LoginFormProps) {
@@ -34,11 +34,10 @@ export default function LoginForm({ initialValues, onSubmit }: LoginFormProps) {
   const handleFormSubmit = async (formValues: LoginPayload) => {
     await onSubmit?.(formValues);
   };
-
   return (
     <Box maxWidth={400}>
       <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <InputField name="username" control={control} label="Tài khoản" type="text" />
+        <InputField name="userName" control={control} label="Tài khoản" type="text" />
         <InputField name="password" control={control} label="Mật khẩu" type="password" />
         <CheckboxField name="rememberMe" control={control} label="Tự động đăng nhập" />
         {error && <Alert severity="error">{error}</Alert>}
@@ -49,8 +48,7 @@ export default function LoginForm({ initialValues, onSubmit }: LoginFormProps) {
             variant="contained"
             color="primary"
             disabled={isSubmitting}
-            fullWidth
-          >
+            fullWidth>
             {isSubmitting && <CircularProgress size={16} color="primary" />}
             {!isSubmitting && 'Đăng nhập'}
           </Button>

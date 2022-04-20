@@ -1,5 +1,6 @@
-export interface LoginPayload{
-    username: string;
+export interface LoginPayload {
+    userName: string;
     password: string;
     rememberMe?: boolean;
 }
+

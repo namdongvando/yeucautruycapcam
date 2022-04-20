@@ -26,15 +26,13 @@ export default function DateField({ name, control, label, disabled }: IDateField
       margin="normal"
       size="small"
       disabled={disabled}
-      error={invalid}
-    >
+      error={invalid}>
       <DatePicker
         label={label}
         value={value ?? null}
         onChange={onChange}
         renderInput={(params) => <TextField {...params} />}
       />
-
       <FormHelperText>{error?.message}</FormHelperText>
     </FormControl>
   );
