@@ -31,16 +31,14 @@ export function SelectField({ name, control, label, disabled, options }: SelectF
       margin="normal"
       size="small"
       disabled={disabled}
-      error={invalid}
-    >
+      error={invalid}>
       <InputLabel id={`${name}_label`}>{label}</InputLabel>
       <Select
         labelId={`${name}_label`}
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        label={label}
-      >
+        label={label}>
         {options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}

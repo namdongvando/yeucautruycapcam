@@ -4,7 +4,7 @@ import { apiLinks } from "utils";
 import axiosClient from "./axiosClient";
 
 export const authApi = {
-    login(payload: LoginPayload) : Promise<User> {
+    login(payload: LoginPayload): Promise<User> {
         return axiosClient.post(apiLinks.auth.login, payload);
     }
 }

@@ -20,19 +20,24 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login(state, action: PayloadAction<LoginPayload>) {
+      console.log(action);
       state.logging = true;
+      state.error = undefined;
     },
     loginSuccess(state, action: PayloadAction<User>) {
       state.logging = false;
       state.isLoading = true;
       state.currentUser = action.payload;
+      state.error = undefined;
     },
     loginFailed(state, action: PayloadAction<any>) {
       state.logging = false;
+      state.error = "Tài Khoản/Mật Khẩu Không Đúng";
     },
     logout(state) {
       state.isLoading = false;
       state.currentUser = undefined;
+      state.error = undefined;
     },
   },
 });

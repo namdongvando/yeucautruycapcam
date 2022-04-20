@@ -1,9 +1,5 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import {
-  Avatar,
-  Box, CssBaseline, Grid,
-  Paper, Typography
-} from '@mui/material';
+import { Avatar, Box, CssBaseline, Grid, Paper, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { LoginPayload } from 'models';
@@ -11,22 +7,23 @@ import React from 'react';
 import { authActions } from '../authSlice';
 import LoginForm from '../components/LoginForm';
 
-const theme = createTheme();  
+const theme = createTheme();
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();
-  const isLoading = useAppSelector((state) => state.auth.isLoading);
+  // const isLoading = useAppSelector((state) => state.auth.isLoading);
+
+  // const error = useAppSelector((state) => state.auth.error);
 
   const handleSubmit = (formValues: LoginPayload) => {
-    dispatch(
-      authActions.login(formValues)
-    );
+    console.log(formValues);
+    dispatch(authActions.login(formValues));
   };
 
   const initialValues: LoginPayload = {
-    username: '',
+    userName: '',
     password: '',
-    rememberMe: false
+    rememberMe: false,
   } as LoginPayload;
 
   return (
@@ -55,8 +52,7 @@ export default function LoginPage() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-            }}
-          >
+            }}>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
